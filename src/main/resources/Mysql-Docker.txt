@@ -1,0 +1,8 @@
+docker run --name shop -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -d mysql
+
+CREATE SCHEMA `shop` ;
+CREATE TABLE shop.user (
+    id int NOT NULL AUTO_INCREMENT,
+    name varchar(255) NOT NULL,
+    PRIMARY KEY (id)
+);
