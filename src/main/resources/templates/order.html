@@ -1,0 +1,355 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+    <!-- PUT YOUR STYLE LIBS HERE -->
+</head>
+<style>
+#choiceDIV {
+  display : flex;
+  max-height: 650px;
+  max-width: 100%  ;
+  overflow: auto;
+  background: green;
+}
+#selectedDIV {
+  display : flex;
+  max-height: 650px;
+  max-width: 100% ;
+  overflow: auto;
+  background: green;
+}
+#choice {
+  background-color: red;
+  max-width: 100% ;
+  min-height:630px;
+}
+#selected {
+  background-color: coral;
+  max-width: 100% ;
+  min-height:630px;
+}
+
+</style>
+<!-- PUT YOUR JS LIBS HERE -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.2.1/js/bootstrap.js"></script>
+    <script>
+    var i = 0 ;
+    function myTimer() {
+        //document.getElementById("demo").innerHTML = "running : "+i;
+        i++ ;
+        console.log(' each 1 second...');
+        /*
+        $.ajax({url: "/rest/user", success: function(result){
+          console.log(result) ;
+        }});
+        */
+        if (i > 10){
+            // clearInterval(myVar);
+        }
+    }
+
+    var myVar = setInterval(myTimer, 5000);
+
+    </script>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">DEMO ORDER</a>
+</nav>
+
+<main role="main"  >
+
+    <div >
+        <div class="container-fluid">
+            <h1>Memnu</h1>
+            <p>description of menu.</p>
+            <div class="row">
+                <div class="col-sm-9" style="background-color:lavender;">
+                    <div id="choiceDIV">
+                        <div id="choice">
+                            <div class="row">
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Thumbnail</h2>
+                                        <p>The .img-thumbnail class creates a thumbnail of the image:</p>
+                                        <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="background-color:lavenderblush; ">
+                    <div id="selectedDIV">
+                        <div id="selected">
+                            <div class="row">
+                                <div class="col" style="background-color:lavender;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:orange;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:lavender;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:orange;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:lavender;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:orange;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:lavender;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:orange;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:lavender;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:orange;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:lavender;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:orange;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:lavender;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:orange;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:lavender;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:orange;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:lavender;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:orange;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:lavender;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:orange;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:lavender;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:orange;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:lavender;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:orange;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:lavender;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:orange;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:lavender;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:orange;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:lavender;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:orange;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                                <div class="col" style="background-color:lavender;">.colo.s.web.servlet.DispatcherServleto.s.web.servlet.DispatcherServlet</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- /.container -->
+
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</body>
+</html>
