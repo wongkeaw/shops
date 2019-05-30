@@ -1,6 +1,6 @@
 package com.driveto.shops.service;
 
-import com.driveto.shops.model.User;
+import com.driveto.shops.entity.User;
 import com.driveto.shops.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

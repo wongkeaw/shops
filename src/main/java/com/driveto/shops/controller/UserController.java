@@ -1,7 +1,7 @@
 package com.driveto.shops.controller;
 
 
-import com.driveto.shops.model.User;
+import com.driveto.shops.entity.User;
 import com.driveto.shops.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

@@ -40,56 +40,40 @@
 
 
 <!-- PUT YOUR JS LIBS HERE -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="webjars/bootstrap/4.2.1/js/bootstrap.js"></script>
-    <script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/4.2.1/js/bootstrap.js"></script>
+<script>
     var i = 0 ;
     function myTimer() {
-        //document.getElementById("demo").innerHTML = "running : "+i;
-        i++ ;
-        console.log(' each 1 second...');
-        /*
-        $.ajax({url: "/rest/user", success: function(result){
+        $.ajax({url: "/rest/shop", success: function(result){
           console.log(result) ;
         }});
-        */
-        if (i > 10){
-            // clearInterval(myVar);
-        }
     }
-
-    var myVar = setInterval(myTimer, 5000);
-
-    </script>
+     var myVar = setInterval(myTimer, 10000);
+</script>
 
 <script>
     function myFunction(me) {
-        var cln = me.cloneNode(true);
-        var price = cln.getElementsByClassName("price");
-        console.log(price) ;
-        console.log(price[0].innerHTML) ;
-        var sumPrice = document.getElementById("sumPrice").innerHTML
-        document.getElementById("sumPrice").innerHTML = parseInt(sumPrice) + parseInt(price[0].innerHTML)
-
-        var para = document.createElement("div");
-        para.classList.add("row");
-        cln.removeAttribute("onclick");
-        para.appendChild(cln );
-        document.getElementById("selected").appendChild(para );
+        var amount = me.getElementsByClassName("amount")[0].innerHTML;
+        if ( parseInt(amount) == 0 ) {
+            return ;
+        }
+        me.getElementsByClassName("amount")[0].innerHTML = parseInt(amount) - 1  ;
     }
 </script>
 <script>
-    function confirmOrder() {
+    function updateOrder() {
         console.log("confirmOrder") ;
         var jsonx =  {"name":"John" };
         $.ajax({
-            url: "/rest/user",
+            url: "/rest/shop",
             dataType: 'json',
             type: 'post',
             contentType: 'application/json',
             data: JSON.stringify( jsonx ),
             processData: false,
             success: function( data, textStatus, jQxhr ){
+
                 console.log(data) ;
             },
             error: function( jqXhr, textStatus, errorThrown ){
@@ -103,23 +87,21 @@
 <body>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">DEMO ORDER</a>
+    <a class="navbar-brand" href="#">SHOP</a>
 </nav>
 
 <main role="main" >
     <div >
         <div class="container-fluid">
             <p>description of menu.</p>
-            <div class="row">
-                <div class="col-sm-9" style="background-color:lavender;">
-                    <div id="choiceDIV">
+
                         <div id="choice">
                             <div class="row">
 
                                 <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
                                     <div class="container">
                                         <h2>Fried chicken 1</h2>
-                                        <p>price: <span class="price">200</span> per unit </p>
+                                        <p>amount: <span class="amount">10</span> unit </p>
                                         <img th:src="@{/images/Fried_chicken_1.jpg}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
                                     </div>
                                 </div>
@@ -127,7 +109,7 @@
                                 <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
                                     <div class="container">
                                         <h2>Fried chicken 2</h2>
-                                        <p>price: <span class="price">200</span> per unit </p>
+                                        <p>amount: <span class="amount">8</span> unit </p>
                                         <img th:src="@{/images/Fried_chicken_2.jpg}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
                                     </div>
                                 </div>
@@ -135,45 +117,21 @@
                                 <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
                                     <div class="container">
                                         <h2>Fried chicken 3</h2>
-                                        <p>price: <span class="price">200</span> per unit </p>
+                                        <p>amount: <span class="amount">5</span> unit </p>
                                         <img th:src="@{/images/Fried_chicken_3.jpg}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
                                     </div>
                                 </div>
 
                                 <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
                                     <div class="container">
-                                        <h2>Fried chicken 3</h2>
-                                        <p>price: <span class="price">200</span> per unit </p>
+                                        <h2>Fried chicken 4</h2>
+                                        <p>amount: <span class="amount">5</span> unit </p>
                                         <img th:src="@{/images/Fried_chicken_3.jpg}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
                                     </div>
                                 </div>
-
                             </div>
-
-
                         </div>
-                    </div>
-                </div>
-                <div class="col-sm-3" style="background-color:lavenderblush; ">
-                    <div id="selectedDIV">
-                        <div id="selected">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-9" style="background-color:lavender;">
-                    <input class="btn btn-primary btn-lg btn-block" onclick="confirmOrder()" type="button" value="Confirm Order">
-                </div>
-                <div class="col-sm-3" style="background-color:lavender;">
-                    <h1> summary : <span id="sumPrice">0</span></h1>
-                </div>
-            </div>
         </div>
     </div>
 </main>

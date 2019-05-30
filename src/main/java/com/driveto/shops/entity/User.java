@@ -1,4 +1,4 @@
-package com.driveto.shops.model;
+package com.driveto.shops.entity;
 
 
 import javax.persistence.*;
