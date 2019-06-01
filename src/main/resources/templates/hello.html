@@ -1,12 +1,192 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
-    <title th:text="'Hello, ' + ${name} + '!'"></title>
-    <link href="/css/main.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Drive To Order.</title>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+    <!-- PUT YOUR STYLE LIBS HERE -->
 </head>
+<style>
+#choiceDIV {
+  display : flex;
+  max-height: 650px;
+  max-width: 100%  ;
+  overflow: auto;
+  background: green;
+}
+#selectedDIV {
+  display : flex;
+  max-height: 650px;
+  max-width: 100% ;
+  overflow: auto;
+  background: green;
+}
+#choice {
+  background-color: red;
+  max-width: 95% ;
+  min-height:630px;
+}
+#selected {
+  background-color: coral;
+  max-width: 95% ;
+  min-height:630px;
+}
+
+</style>
+
+
+<!-- PUT YOUR JS LIBS HERE -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/4.2.1/js/bootstrap.js"></script>
+<script>
+    var i = 0 ;
+    function myTimer() {
+        $.ajax({url: "/rest/shop", success: function(result){
+            console.log(result) ;
+        }});
+    }
+     var myVar = setInterval(myTimer, 10000);
+</script>
+
+<SCRIPT>
+    function drawOrder() {
+
+
+        var col = document.createElement("div");
+        col.classList.add("col");
+        col.style.backgroundColor = "lavender" ;
+
+        var container = document.createElement("div");
+        container.classList.add("container");
+
+        var title = document.createElement("h2");
+        title.innerHTML = "Fried chicken 1"
+
+        var img = document.createElement("IMG");
+        img.setAttribute("src", "/images/Fried_chicken_1.jpg");
+        img.setAttribute("width", "304");
+        img.setAttribute("height", "236");
+        img.setAttribute("alt", "Cinque Terre");
+        img.setAttribute("class", "img-thumbnail");
+
+        container.appendChild(title) ;
+        container.appendChild(img) ;
+
+        col.appendChild(container) ;
+
+        return col ;
+     }
+</SCRIPT>
+
+
+
+<script>
+    function myFunction(me) {
+        var amount = me.getElementsByClassName("amount")[0].innerHTML;
+        if ( parseInt(amount) == 0 ) {
+            return ;
+        }
+        me.getElementsByClassName("amount")[0].innerHTML = parseInt(amount) - 1  ;
+    }
+</script>
+<script>
+    function updateOrder() {
+        console.log("confirmOrder") ;
+        var jsonx =  {"name":"John" };
+        $.ajax({
+            url: "/rest/shop",
+            dataType: 'json',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify( jsonx ),
+            processData: false,
+            success: function( data, textStatus, jQxhr ){
+
+                console.log(data) ;
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+
+    }
+</script>
+
 <body>
-    <h2 class="hello-title" th:text="'Hello, ' + ${name} + '!'"></h2>
-    <script src="/js/main.js"></script>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">SHOP</a>
+</nav>
+
+<main role="main" >
+    <div >
+        <div class="container-fluid">
+            <p>description of menu.</p>
+
+                        <div id="choice">
+                            <div class="row">
+
+                                <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Fried chicken 1</h2>
+                                        <p>amount: <span class="amount">10</span> unit </p>
+                                        <img th:src="@{/images/Fried_chicken_1.jpg}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Fried chicken 2</h2>
+                                        <p>amount: <span class="amount">8</span> unit </p>
+                                        <img th:src="@{/images/Fried_chicken_2.jpg}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Fried chicken 3</h2>
+                                        <p>amount: <span class="amount">5</span> unit </p>
+                                        <img th:src="@{/images/Fried_chicken_3.jpg}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+
+                                <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
+                                    <div class="container">
+                                        <h2>Fried chicken 4</h2>
+                                        <p>amount: <span class="amount">5</span> unit </p>
+                                        <img th:src="@{/images/Fried_chicken_3.jpg}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+        </div>
+    </div>
+</main>
+<!-- /.container -->
+
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+<SCRIPT>
+    function init() {
+
+        for (var rowI = 0 ; rowI < 5 ; rowI++ ){
+             var row = document.createElement("div");
+             row.classList.add("row");
+            for (var colI = 0 ; colI < 4 ; colI++ ){
+                var draw = drawOrder() ;
+                row.appendChild(draw) ;
+            }
+            document.getElementById("choice").appendChild(row );
+        }
+   }
+
+   init()
+
+
+</SCRIPT>
 </body>
 </html>
