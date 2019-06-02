@@ -43,18 +43,33 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/4.2.1/js/bootstrap.js"></script>
 <script>
-    var i = 0 ;
     function myTimer() {
-        $.ajax({url: "/rest/shop", success: function(result){
+        $.ajax({url: "/rest/shop",
+        success: function(result){
             console.log(result) ;
+
+            var myNode = document.getElementById("choice");
+            while (myNode.firstChild) {
+                myNode.removeChild(myNode.firstChild);
+            }
+           for (var rowI = 0 ; rowI < 1 ; rowI++ ){
+                var row = document.createElement("div");
+                row.classList.add("row");
+                for (var colI = 0 ; colI < 4 ; colI++ ){
+                    var jsonx = result[colI] ;
+                    var draw = drawOrder(jsonx) ;
+                    row.appendChild(draw) ;
+                }
+                document.getElementById("choice").appendChild(row );
+            }
+
         }});
     }
      var myVar = setInterval(myTimer, 10000);
 </script>
 
 <SCRIPT>
-    function drawOrder() {
-
+    function drawOrder(jsonx) {
 
         var col = document.createElement("div");
         col.classList.add("col");
@@ -64,7 +79,21 @@
         container.classList.add("container");
 
         var title = document.createElement("h2");
-        title.innerHTML = "Fried chicken 1"
+        title.innerHTML = jsonx.name ;
+
+        var textA1 = document.createElement("span");
+        textA1.innerHTML = "amount :" ;
+
+        var amount = document.createElement("span");
+        amount.innerHTML = "10" ;
+
+         var textA2 = document.createElement("span");
+        textA2.innerHTML = "  unit" ;
+
+        var p = document.createElement("p");
+        p.appendChild(textA1) ;
+        p.appendChild(amount) ;
+        p.appendChild(textA2) ;
 
         var img = document.createElement("IMG");
         img.setAttribute("src", "/images/Fried_chicken_1.jpg");
@@ -74,6 +103,7 @@
         img.setAttribute("class", "img-thumbnail");
 
         container.appendChild(title) ;
+        container.appendChild(p) ;
         container.appendChild(img) ;
 
         col.appendChild(container) ;
@@ -127,7 +157,7 @@
         <div class="container-fluid">
             <p>description of menu.</p>
 
-                        <div id="choice">
+                        <div id="choice" class="container" >
                             <div class="row">
 
                                 <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
@@ -173,11 +203,13 @@
 <SCRIPT>
     function init() {
 
-        for (var rowI = 0 ; rowI < 5 ; rowI++ ){
+        var jsonx =  {"name":"John" }  ;
+
+        for (var rowI = 0 ; rowI < 1 ; rowI++ ){
              var row = document.createElement("div");
              row.classList.add("row");
             for (var colI = 0 ; colI < 4 ; colI++ ){
-                var draw = drawOrder() ;
+                var draw = drawOrder(jsonx) ;
                 row.appendChild(draw) ;
             }
             document.getElementById("choice").appendChild(row );
