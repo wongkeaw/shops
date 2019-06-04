@@ -2,12 +2,13 @@ package com.driveto.shops.controller;
 
 
 import com.driveto.shops.entity.Order;
+import com.driveto.shops.model.ShopItem;
 import com.driveto.shops.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 
 @RestController
@@ -24,8 +25,24 @@ public class ShopRestController {
     }
 
     @GetMapping
-    public List<Order> getAll() {
-        return orderService.getAll();
+    public List<List<ShopItem>> getAll() {
+        List<List<ShopItem>> shops = new ArrayList<>();
+
+        for (int row = 0 ; row < 10 ; row++){
+            ArrayList<ShopItem> shi = new ArrayList<>() ;
+            for (int cal = 0 ; cal < 4 ; cal++){
+                ShopItem shop  = new ShopItem() ;
+                shop.setName("Name"+ row +""+cal );
+                shop.setDescription("Description"+ row +""+cal );
+                shop.setAmountDue(10);
+                shop.setAmountMade(2000);
+                shop.setImgUrl("/images/Fried_chicken_1.jpg");
+                shi.add(shop) ;
+            }
+            shops.add(shi) ;
+        }
+        return  shops ;
+
     }
 
 }

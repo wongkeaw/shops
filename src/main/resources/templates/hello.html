@@ -52,12 +52,13 @@
             while (myNode.firstChild) {
                 myNode.removeChild(myNode.firstChild);
             }
-           for (var rowI = 0 ; rowI < 1 ; rowI++ ){
+           for (var rowI = 0 ; rowI < result.length ; rowI++ ){
                 var row = document.createElement("div");
                 row.classList.add("row");
-                for (var colI = 0 ; colI < 4 ; colI++ ){
-                    var jsonx = result[colI] ;
-                    var draw = drawOrder(jsonx) ;
+                var columns = result[rowI] ;
+                for (var colI = 0 ; colI < columns.length ; colI++ ){
+                    var myJson = columns[colI] ;
+                    var draw = drawOrder(myJson) ;
                     row.appendChild(draw) ;
                 }
                 document.getElementById("choice").appendChild(row );
@@ -69,7 +70,7 @@
 </script>
 
 <SCRIPT>
-    function drawOrder(jsonx) {
+    function drawOrder(json) {
 
         var col = document.createElement("div");
         col.classList.add("col");
@@ -79,31 +80,42 @@
         container.classList.add("container");
 
         var title = document.createElement("h2");
-        title.innerHTML = jsonx.name ;
+        title.innerHTML = json.name ;
 
-        var textA1 = document.createElement("span");
-        textA1.innerHTML = "amount :" ;
 
-        var amount = document.createElement("span");
-        amount.innerHTML = "10" ;
+        var dueTextA1 = document.createElement("span");
+        dueTextA1.innerHTML = "amount due :" ;
+        var dueAmount = document.createElement("span");
+        dueAmount.innerHTML = json.amountDue ;
+         var dueTextA2 = document.createElement("span");
+        dueTextA2.innerHTML = "  unit" ;
+        var dueP = document.createElement("p");
+        dueP.appendChild(dueTextA1) ;
+        dueP.appendChild(dueAmount) ;
+        dueP.appendChild(dueTextA2) ;
 
-         var textA2 = document.createElement("span");
-        textA2.innerHTML = "  unit" ;
+        var madeTextA1 = document.createElement("span");
+        madeTextA1.innerHTML = "amount made :" ;
+        var madeAmount = document.createElement("span");
+        madeAmount.innerHTML = json.amountMade ;
+         var madeTextA2 = document.createElement("span");
+        madeTextA2.innerHTML = "  unit" ;
+        var madeP = document.createElement("p");
+        madeP.appendChild(madeTextA1) ;
+        madeP.appendChild(madeAmount) ;
+        madeP.appendChild(madeTextA2) ;
 
-        var p = document.createElement("p");
-        p.appendChild(textA1) ;
-        p.appendChild(amount) ;
-        p.appendChild(textA2) ;
 
         var img = document.createElement("IMG");
-        img.setAttribute("src", "/images/Fried_chicken_1.jpg");
+        img.setAttribute("src", json.imgUrl);
         img.setAttribute("width", "304");
         img.setAttribute("height", "236");
         img.setAttribute("alt", "Cinque Terre");
         img.setAttribute("class", "img-thumbnail");
 
         container.appendChild(title) ;
-        container.appendChild(p) ;
+        container.appendChild(dueP) ;
+        container.appendChild(madeP) ;
         container.appendChild(img) ;
 
         col.appendChild(container) ;
