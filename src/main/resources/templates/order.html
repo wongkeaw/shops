@@ -41,31 +41,16 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="webjars/bootstrap/4.2.1/js/bootstrap.js"></script>
     <script>
-    var i = 0 ;
-    function myTimer() {
-        //document.getElementById("demo").innerHTML = "running : "+i;
-        i++ ;
-        console.log(' each 1 second...');
-        /*
-        $.ajax({url: "/rest/user", success: function(result){
-          console.log(result) ;
-        }});
-        */
-        if (i > 10){
-            // clearInterval(myVar);
-        }
-    }
-
-    var myVar = setInterval(myTimer, 5000);
 
     </script>
 
 <script>
     function myFunction(me) {
+
         var cln = me.cloneNode(true);
         var price = cln.getElementsByClassName("price");
-        console.log(price) ;
-        console.log(price[0].innerHTML) ;
+        //console.log(price) ;
+        //console.log(price[0].innerHTML) ;
         var sumPrice = document.getElementById("sumPrice").innerHTML
         document.getElementById("sumPrice").innerHTML = parseInt(sumPrice) + parseInt(price[0].innerHTML)
 
@@ -176,7 +161,10 @@
     </div>
 </main>
 <!-- /.container -->
+<SCRIPT>
 
+
+</SCRIPT>
 <script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
 </body>
 </html>

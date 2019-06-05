@@ -214,18 +214,7 @@
 <script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
 <SCRIPT>
     function init() {
-
-        var jsonx =  {"name":"John" }  ;
-
-        for (var rowI = 0 ; rowI < 1 ; rowI++ ){
-             var row = document.createElement("div");
-             row.classList.add("row");
-            for (var colI = 0 ; colI < 4 ; colI++ ){
-                var draw = drawOrder(jsonx) ;
-                row.appendChild(draw) ;
-            }
-            document.getElementById("choice").appendChild(row );
-        }
+        console.log("init") ;
    }
 
    init()
