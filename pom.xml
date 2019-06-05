@@ -20,7 +20,7 @@
 		<java.version>1.8</java.version>
 		<!-- WEB DEPENDENCIES VERSIONS (USED FOR FILTERING AND URL RESOLUTION) -->
 		<bootstrap.version>4.2.1</bootstrap.version>
-		<jquery.version>4.2.1</jquery.version>
+		<jquery.version>3.2.1</jquery.version>
 	</properties>
 
 

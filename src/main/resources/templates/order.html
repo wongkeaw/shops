@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,9 +8,14 @@
     <title>Drive To Order.</title>
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
-
     <!-- PUT YOUR STYLE LIBS HERE -->
 </head>
+<!-- PUT YOUR JS LIBS HERE -->
+
+<script type="text/javascript" th:src="@{webjars/jquery/3.2.1/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+
 <style>
 #choiceDIV {
   display : flex;
@@ -35,14 +41,6 @@
 }
 
 </style>
-
-
-<!-- PUT YOUR JS LIBS HERE -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="webjars/bootstrap/4.2.1/js/bootstrap.js"></script>
-    <script>
-
-    </script>
 
 <script>
     function myFunction(me) {
