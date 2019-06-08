@@ -76,17 +76,19 @@ p.amount {
             while (myNode.firstChild) {
                 myNode.removeChild(myNode.firstChild);
             }
+
+            var row = document.createElement("div");
+            row.classList.add("row");
            for (var rowI = 0 ; rowI < result.length ; rowI++ ){
-                var row = document.createElement("div");
-                row.classList.add("row");
+
                 var columns = result[rowI] ;
                 for (var colI = 0 ; colI < columns.length ; colI++ ){
                     var myJson = columns[colI] ;
                     var draw = drawOrder(myJson) ;
                     row.appendChild(draw) ;
                 }
-                document.getElementById("choice").appendChild(row );
             }
+            document.getElementById("choice").appendChild(row );
             clearInterval(myVar);
 
         }});
@@ -137,8 +139,8 @@ p.amount {
 
         var img = document.createElement("IMG");
         img.setAttribute("src", json.imgUrl);
-        img.setAttribute("width", "304");
-        img.setAttribute("height", "236");
+        img.setAttribute("width", "400");
+        img.setAttribute("height", "300");
         img.setAttribute("alt", "Cinque Terre");
         img.setAttribute("class", "img-thumbnail");
 
