@@ -55,12 +55,14 @@
 h2.title {
   text-align: center ;
   color: red ;
-  font-size: 2vw ;
+  // font-size: 2vw ;
+  min-width: max-content;
 }
 p.amount {
   text-align: left ;
   color: black ;
-  font-size: 1.5vw ;
+  // font-size: 1.5vw ;
+  min-width: max-content;
 }
 
 </style>
@@ -70,7 +72,6 @@ p.amount {
         $.ajax({url: "/rest/shop",
         success: function(result){
             console.log(result) ;
-
             var myNode = document.getElementById("choice");
             while (myNode.firstChild) {
                 myNode.removeChild(myNode.firstChild);
@@ -86,6 +87,7 @@ p.amount {
                 }
                 document.getElementById("choice").appendChild(row );
             }
+            clearInterval(myVar);
 
         }});
     }
