@@ -41,6 +41,27 @@
   max-width: 95% ;
   min-height:630px;
 }
+.col-extend {
+    border-radius : 5% ;
+    padding : 0.1% ;
+    margin : 0.2% ;
+    min-width: 150px;
+    background-color: lavender ;
+}
+
+.col-extend:active {
+    background-color: Silver ;
+}
+h2.title {
+  text-align: center ;
+  color: red ;
+  font-size: 2vw ;
+}
+p.amount {
+  text-align: left ;
+  color: black ;
+  font-size: 1.5vw ;
+}
 
 </style>
 
@@ -76,12 +97,13 @@
 
         var col = document.createElement("div");
         col.classList.add("col");
-        col.style.backgroundColor = "lavender" ;
+        col.classList.add("col-extend");
 
         var container = document.createElement("div");
         container.classList.add("container");
 
         var title = document.createElement("h2");
+        title.classList.add("title");
         title.innerHTML = json.name ;
 
 
@@ -92,20 +114,23 @@
          var dueTextA2 = document.createElement("span");
         dueTextA2.innerHTML = "  unit" ;
         var dueP = document.createElement("p");
+        dueP.classList.add("amount");
         dueP.appendChild(dueTextA1) ;
         dueP.appendChild(dueAmount) ;
         dueP.appendChild(dueTextA2) ;
 
+        var newLine = document.createElement("br");
         var madeTextA1 = document.createElement("span");
         madeTextA1.innerHTML = "amount made :" ;
         var madeAmount = document.createElement("span");
         madeAmount.innerHTML = json.amountMade ;
-         var madeTextA2 = document.createElement("span");
+        var madeTextA2 = document.createElement("span");
         madeTextA2.innerHTML = "  unit" ;
-        var madeP = document.createElement("p");
-        madeP.appendChild(madeTextA1) ;
-        madeP.appendChild(madeAmount) ;
-        madeP.appendChild(madeTextA2) ;
+
+        dueP.appendChild(newLine) ;
+        dueP.appendChild(madeTextA1) ;
+        dueP.appendChild(madeAmount) ;
+        dueP.appendChild(madeTextA2) ;
 
 
         var img = document.createElement("IMG");
@@ -117,7 +142,6 @@
 
         container.appendChild(title) ;
         container.appendChild(dueP) ;
-        container.appendChild(madeP) ;
         container.appendChild(img) ;
 
         col.appendChild(container) ;
