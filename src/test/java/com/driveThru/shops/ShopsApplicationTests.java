@@ -1,4 +1,4 @@
-package com.driveto.shops;
+package com.driveThru.shops;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package com.driveto.shops.model;
+package com.driveThru.shops.model;
 
 public class ShopItem {
 

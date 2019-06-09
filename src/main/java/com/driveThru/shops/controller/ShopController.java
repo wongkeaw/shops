@@ -1,4 +1,4 @@
-package com.driveto.shops.controller;
+package com.driveThru.shops.controller;
 
 
 import org.springframework.stereotype.Controller;

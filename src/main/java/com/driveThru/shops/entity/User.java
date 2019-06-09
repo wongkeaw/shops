@@ -1,16 +1,16 @@
-package com.driveto.shops.entity;
+package com.driveThru.shops.entity;
+
 
 import javax.persistence.*;
 
 @Table
-@Entity(name = "order_food")
-public class Order {
+@Entity
+public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    @Column(name = "order_amount")
-    private Long orderAmount ;
 
     public Long getId() {
         return id;
@@ -26,13 +26,5 @@ public class Order {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Long getOrderAmount() {
-        return orderAmount;
-    }
-
-    public void setOrderAmount(Long orderAmount) {
-        this.orderAmount = orderAmount;
     }
 }

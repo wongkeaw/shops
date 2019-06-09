@@ -1,8 +1,8 @@
-package com.driveto.shops.controller;
+package com.driveThru.shops.controller;
 
 
-import com.driveto.shops.entity.User;
-import com.driveto.shops.service.UserService;
+import com.driveThru.shops.entity.User;
+import com.driveThru.shops.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.driveto.shops;
+package com.driveThru.shops;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

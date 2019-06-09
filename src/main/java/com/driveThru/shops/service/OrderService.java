@@ -1,7 +1,7 @@
-package com.driveto.shops.service;
+package com.driveThru.shops.service;
 
-import com.driveto.shops.entity.Order;
-import com.driveto.shops.repository.OrderRepository;
+import com.driveThru.shops.entity.Order;
+import com.driveThru.shops.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

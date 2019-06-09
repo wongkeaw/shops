@@ -93,7 +93,7 @@ p.amount {
 
         }});
     }
-     var myVar = setInterval(myTimer, 10000);
+     var myVar = setInterval(myTimer, 1000);
 </script>
 
 <SCRIPT>
@@ -198,44 +198,7 @@ p.amount {
     <div >
         <div class="container-fluid">
             <p>description of menu.</p>
-
-                        <div id="choice" class="container" >
-                            <div class="row">
-
-                                <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
-                                    <div class="container">
-                                        <h2>Fried chicken 1</h2>
-                                        <p>amount: <span class="amount">10</span> unit </p>
-                                        <img th:src="@{/images/Fried_chicken_1.jpg}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
-                                    </div>
-                                </div>
-
-                                <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
-                                    <div class="container">
-                                        <h2>Fried chicken 2</h2>
-                                        <p>amount: <span class="amount">8</span> unit </p>
-                                        <img th:src="@{/images/Fried_chicken_2.jpg}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
-                                    </div>
-                                </div>
-
-                                <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
-                                    <div class="container">
-                                        <h2>Fried chicken 3</h2>
-                                        <p>amount: <span class="amount">5</span> unit </p>
-                                        <img th:src="@{/images/Fried_chicken_3.jpg}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
-                                    </div>
-                                </div>
-
-                                <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
-                                    <div class="container">
-                                        <h2>Fried chicken 4</h2>
-                                        <p>amount: <span class="amount">5</span> unit </p>
-                                        <img th:src="@{/images/Fried_chicken_3.jpg}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                <div id="choice" class="container" />
         </div>
     </div>
 </main>
@@ -243,6 +206,7 @@ p.amount {
 <SCRIPT>
     function init() {
         console.log("init") ;
+        myTimer() ;
    }
    init() ;
 </SCRIPT>

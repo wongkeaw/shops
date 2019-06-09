@@ -1,9 +1,9 @@
-package com.driveto.shops.controller;
+package com.driveThru.shops.controller;
 
 
-import com.driveto.shops.entity.Order;
-import com.driveto.shops.model.ShopItem;
-import com.driveto.shops.service.OrderService;
+import com.driveThru.shops.entity.Order;
+import com.driveThru.shops.model.ShopItem;
+import com.driveThru.shops.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
