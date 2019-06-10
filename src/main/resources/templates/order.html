@@ -94,7 +94,7 @@ p.amount {
     function drawOrder(json) {
 
         var col = document.createElement("div");
-        col.setAttribute("onclick","updateMemu(this) ;");
+        col.setAttribute("onclick","drawSelected(this) ;");
         col.classList.add("col");
         col.classList.add("col-extend");
 
@@ -107,12 +107,12 @@ p.amount {
 
 
         var dueTextA1 = document.createElement("span");
-        dueTextA1.innerHTML = "amount due :" ;
+        dueTextA1.innerHTML = " Price :" ;
         var dueAmount = document.createElement("span");
         dueAmount.classList.add("price");
         dueAmount.innerHTML = json.price ;
          var dueTextA2 = document.createElement("span");
-        dueTextA2.innerHTML = "  unit" ;
+        dueTextA2.innerHTML = " Baht/Unit" ;
         var dueP = document.createElement("p");
         dueP.classList.add("amount");
         dueP.appendChild(dueTextA1) ;
@@ -141,6 +141,83 @@ p.amount {
         return col ;
      }
 </SCRIPT>
+
+
+<SCRIPT>
+    function drawSelected(me) {
+        drawSelectedList(me) ;
+        
+        var sum = 0 ;
+        var des = document.getElementById("selected") ;
+        var idDes = des.getElementsByClassName("priceSUM");
+        for ( var item = 0 ; item < idDes.length ; item++ ){
+                sum = sum + parseInt(idDes[item].innerHTML );
+        }
+        document.getElementById("sumPrice").innerHTML = sum ;
+
+    }
+    function drawSelectedList(me) {
+        var json = {amountUnit : 0 , amountPrice : 0 }  ;
+        var cln = me.cloneNode(true);
+
+        var id = cln.getElementsByClassName("id")[0];
+        var des = document.getElementById("selected") ;
+        var idDes = des.getElementsByClassName("col-extend");
+        for ( var item = 0 ; item < idDes.length ; item++ ){
+                var idItem = idDes[item] ;
+                var inId = idItem.getElementsByClassName("id")[0];
+                if (id.innerHTML == inId.innerHTML ){
+                        console.log("sum") ;
+                        idItem.getElementsByClassName("amountSUM")[0].innerHTML = parseInt(idItem.getElementsByClassName("amountSUM")[0].innerHTML) + 1 ;
+                        idItem.getElementsByClassName("priceSUM")[0].innerHTML = parseInt(idItem.getElementsByClassName("priceSUM")[0].innerHTML) + parseInt(cln.getElementsByClassName("price")[0].innerHTML) ;
+                        return ;
+                }
+        }
+        if (json.amountUnit == 0 ){
+            json.amountUnit =  1 ;
+            json.amountPrice = parseInt(cln.getElementsByClassName("price")[0].innerHTML) ;
+        }
+
+        var amount = cln.getElementsByClassName("amount")[0]
+
+        while (amount.firstChild) {
+                amount.removeChild(amount.firstChild);
+         }
+
+        var dueTextA1 = document.createElement("span");
+        dueTextA1.innerHTML = "amount sum :" ;
+        var dueAmount = document.createElement("span");
+        dueAmount.classList.add("amountSUM");
+        dueAmount.innerHTML = json.amountUnit ;
+         var dueTextA2 = document.createElement("span");
+        dueTextA2.innerHTML = "  unit" ;
+        amount.classList.add("amount");
+        amount.appendChild(dueTextA1) ;
+        amount.appendChild(dueAmount) ;
+        amount.appendChild(dueTextA2) ;
+
+        var newLine = document.createElement("br");
+        var madeTextA1 = document.createElement("span");
+        madeTextA1.innerHTML = "price sum :" ;
+        var madeAmount = document.createElement("span");
+        madeAmount.classList.add("priceSUM");
+        madeAmount.innerHTML = json.amountPrice ;
+        var madeTextA2 = document.createElement("span");
+        madeTextA2.innerHTML = "  baht" ;
+
+        amount.appendChild(newLine) ;
+        amount.appendChild(madeTextA1) ;
+        amount.appendChild(madeAmount) ;
+        amount.appendChild(madeTextA2) ;
+
+        var para = document.createElement("div");
+        para.classList.add("row");
+        cln.removeAttribute("onclick");
+        para.appendChild(cln );
+        document.getElementById("selected").appendChild(para );
+     }
+</SCRIPT>
+
 
 <script>
     function updateMemu(me) {
