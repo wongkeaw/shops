@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Drive To Order.</title>
+    <title>SHOP.</title>
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
     <!-- PUT YOUR STYLE LIBS HERE -->
@@ -41,19 +41,123 @@
   max-width: 95% ;
   min-height:630px;
 }
+.col-extend {
+    border-radius : 5% ;
+    padding : 0.1% ;
+    margin : 0.2% ;
+    min-width: max-content ;
+    background-color: lavender ;
+}
+
+.col-extend:active {
+    background-color: Silver ;
+}
+h2.title {
+  text-align: center ;
+  color: red ;
+  /* font-size: 2vw ; */
+  /* min-width: max-content; */
+}
+p.amount {
+  text-align: left ;
+  color: black ;
+  /* font-size: 1.5vw ; */
+  /* min-width: max-content; */
+}
 
 </style>
 
-
 <script>
-    var i = 0 ;
     function myTimer() {
-        $.ajax({url: "/rest/shop", success: function(result){
-          console.log(result) ;
+        $.ajax({url: "/rest/shop",
+        success: function(result){
+            console.log(result) ;
+            var myNode = document.getElementById("choice");
+            while (myNode.firstChild) {
+                myNode.removeChild(myNode.firstChild);
+            }
+
+            var row = document.createElement("div");
+            row.classList.add("row");
+           for (var item = 0 ; item < result.length ; item++ ){
+                var myJson = result[item] ;
+                var draw = drawOrder(myJson) ;
+                row.appendChild(draw) ;
+            }
+            document.getElementById("choice").appendChild(row );
+           // clearInterval(myVar);
+
         }});
     }
-     var myVar = setInterval(myTimer, 10000);
+     var myVar = setInterval(myTimer, 10*1000);
 </script>
+<script>
+
+</script>
+<SCRIPT>
+    function drawOrder(json) {
+
+        var col = document.createElement("div");
+        col.setAttribute("onclick","updateMemu(this) ;");
+        col.classList.add("col");
+        col.classList.add("col-extend");
+
+        var container = document.createElement("div");
+        container.classList.add("container");
+
+        var title = document.createElement("h2");
+        title.classList.add("title");
+        title.innerHTML = json.name ;
+
+
+        var dueTextA1 = document.createElement("span");
+        dueTextA1.innerHTML = "amount due :" ;
+        var dueAmount = document.createElement("span");
+        dueAmount.innerHTML = json.amountDue ;
+         var dueTextA2 = document.createElement("span");
+        dueTextA2.innerHTML = "  unit" ;
+        var dueP = document.createElement("p");
+        dueP.classList.add("amount");
+        dueP.appendChild(dueTextA1) ;
+        dueP.appendChild(dueAmount) ;
+        dueP.appendChild(dueTextA2) ;
+
+        var newLine = document.createElement("br");
+        var madeTextA1 = document.createElement("span");
+        madeTextA1.innerHTML = "amount made :" ;
+        var madeAmount = document.createElement("span");
+        madeAmount.innerHTML = json.amountMade ;
+        var madeTextA2 = document.createElement("span");
+        madeTextA2.innerHTML = "  unit" ;
+
+        dueP.appendChild(newLine) ;
+        dueP.appendChild(madeTextA1) ;
+        dueP.appendChild(madeAmount) ;
+        dueP.appendChild(madeTextA2) ;
+
+
+        var img = document.createElement("IMG");
+        img.setAttribute("src", json.imgUrl);
+        img.setAttribute("width", "400");
+        img.setAttribute("height", "300");
+        img.setAttribute("alt", "Cinque Terre");
+        img.setAttribute("class", "img-thumbnail");
+
+        var menuId = document.createElement("p");
+        menuId.classList.add("id");
+        menuId.style.display = "none" ;
+        menuId.innerHTML = json.id ;
+
+        container.appendChild(title) ;
+        container.appendChild(dueP) ;
+        container.appendChild(img) ;
+        container.appendChild(menuId) ;
+
+        col.appendChild(container) ;
+
+        return col ;
+     }
+</SCRIPT>
 
 <script>
     function myFunction(me) {
@@ -65,9 +169,10 @@
     }
 </script>
 <script>
-    function updateOrder() {
+    function updateMemu(me) {
         console.log("confirmOrder") ;
-        var jsonx =  {"name":"John" };
+        var id = me.getElementsByClassName("id")[0].innerHTML;
+        var jsonx =  {"id": id };
         $.ajax({
             url: "/rest/shop",
             dataType: 'json',
@@ -75,9 +180,24 @@
             contentType: 'application/json',
             data: JSON.stringify( jsonx ),
             processData: false,
-            success: function( data, textStatus, jQxhr ){
+            success: function( result, textStatus, jQxhr ){
 
-                console.log(data) ;
+                console.log(result) ;
+                var myNode = document.getElementById("choice");
+                while (myNode.firstChild) {
+                    myNode.removeChild(myNode.firstChild);
+                }
+
+                var row = document.createElement("div");
+                row.classList.add("row");
+               for (var item = 0 ; item < result.length ; item++ ){
+                    var myJson = result[item] ;
+                    var draw = drawOrder(myJson) ;
+                    row.appendChild(draw) ;
+                }
+                document.getElementById("choice").appendChild(row );
+
+
             },
             error: function( jqXhr, textStatus, errorThrown ){
                 console.log( errorThrown );
@@ -97,47 +217,17 @@
     <div >
         <div class="container-fluid">
             <p>description of menu.</p>
-
-                        <div id="choice">
-                            <div class="row">
-
-                                <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
-                                    <div class="container">
-                                        <h2>Fried chicken 1</h2>
-                                        <p>amount: <span class="amount">10</span> unit </p>
-                                        <img th:src="@{/images/Fried_chicken_1.jpg}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
-                                    </div>
-                                </div>
-
-                                <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
-                                    <div class="container">
-                                        <h2>Fried chicken 2</h2>
-                                        <p>amount: <span class="amount">8</span> unit </p>
-                                        <img th:src="@{/images/Fried_chicken_2.jpg}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
-                                    </div>
-                                </div>
-
-                                <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
-                                    <div class="container">
-                                        <h2>Fried chicken 3</h2>
-                                        <p>amount: <span class="amount">5</span> unit </p>
-                                        <img th:src="@{/images/Fried_chicken_3.jpg}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
-                                    </div>
-                                </div>
-
-                                <div onclick="myFunction(this)" class="col" style="background-color:lavender;">
-                                    <div class="container">
-                                        <h2>Fried chicken 4</h2>
-                                        <p>amount: <span class="amount">5</span> unit </p>
-                                        <img th:src="@{/images/Fried_chicken_3.jpg}" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+            <div id="choice" class="container" />
         </div>
     </div>
 </main>
 <!-- /.container -->
+<SCRIPT>
+    function init() {
+        console.log("init") ;
+        myTimer() ;
+   }
+   init() ;
+</SCRIPT>
 </body>
 </html>
