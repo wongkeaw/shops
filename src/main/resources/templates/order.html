@@ -66,6 +66,18 @@ p.amount {
 </style>
 
 <script>
+	
+function removeEventListeners(element, listenerMap) {
+    Object.keys(listenerMap).forEach(function (name) {
+        var listeners = listenerMap[name];
+        listeners.forEach(function (object) {
+            element.removeEventListener(name, object.listener);
+        });
+    });
+}
+
+removeEventListeners(document, getEventListeners(document))
+	
     function myTimer() {
         $.ajax({url: "/rest/order",
         success: function(result){
