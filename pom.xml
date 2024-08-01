@@ -19,7 +19,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<!-- WEB DEPENDENCIES VERSIONS (USED FOR FILTERING AND URL RESOLUTION) -->
-		<bootstrap.version>4.2.1</bootstrap.version>
+		<bootstrap.version>4.3.1</bootstrap.version>
 		<jquery.version>3.2.1</jquery.version>
 	</properties>
 
